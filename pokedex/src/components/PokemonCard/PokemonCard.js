@@ -8,6 +8,8 @@ import { useHistory } from 'react-router-dom'
 import { goToPokedex } from '../../routes/coordinator'
 import { goToPokeDetail } from '../../routes/coordinator'
 
+import { Button } from '../../constants/buttons'
+
 const PokemonCard = () => {
     const history = useHistory()
 
@@ -19,8 +21,8 @@ const PokemonCard = () => {
         </ImgContainer>
 
         <ButtonsContainer>
-            <button onClick={() => goToPokedex(history) }> Adicionar </button>
-            <button onClick={() => goToPokeDetail(history)}> Ver detalhes </button>
+            <Button onClick={() => goToPokedex(history) }> Adicionar </Button>
+            <Button onClick={() => goToPokeDetail(history)}> Ver detalhes </Button>
         </ButtonsContainer>
 
     </PokeContainer>
