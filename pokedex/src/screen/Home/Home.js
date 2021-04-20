@@ -6,6 +6,7 @@ import Header from '../../components/Header/Header'
 import PokemonCard from '../../components/PokemonCard/PokemonCard'
 
 import { goToPokeDetail, goToPokedex } from '../../routes/coordinator'
+import { Button } from '../../constants/buttons'
 
 const Home = () => {
     const history = useHistory()
@@ -14,8 +15,8 @@ const Home = () => {
         <div>
             <Header/>
             <h1>Home</h1>
-            <button onClick={ () => goToPokeDetail(history) }>Detalhes</button>
-            <button onClick={ () => goToPokedex(history) }>Pokedex</button>
+            <Button onClick={ () => goToPokeDetail(history) }>Detalhes</Button>
+            <Button onClick={ () => goToPokedex(history) }>Pokedex</Button>
             <PokemonCard/>
         </div>
     )

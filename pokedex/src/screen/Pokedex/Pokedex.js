@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { goToHome } from '../../routes/coordinator'
 
 import Header from '../../components/Header/Header'
+import { Button } from '../../constants/buttons'
 
 const Pokedex = () => {
     const history = useHistory()
@@ -12,7 +13,7 @@ const Pokedex = () => {
         <div>
             <Header/>
             <h1>Pokedex</h1>
-            <button onClick = {() => goToHome(history)}>Voltar Para Home</button>
+            <Button onClick = {() => goToHome(history)}>Voltar Para Home</Button>
         </div>
     )
 }
