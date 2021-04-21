@@ -1,8 +1,15 @@
 import React from 'react'
 import Router from './routes/Router'
+import GlobalState from './global/GlobalState'
 
 function App() {
-  return <Router />
+  return (
+  <GlobalState>
+  <Router />
+  </GlobalState>
+  
+  )
+
 }
 
 export default App;

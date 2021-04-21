@@ -1,5 +1,5 @@
-import React from 'react'
-import axios from 'axios'
+import React, { useContext } from 'react'
+import GlobalStateContext from '../../global/GlobalStateContext'
 import { useHistory } from 'react-router-dom'
 
 import Header from '../../components/Header/Header'
@@ -10,6 +10,7 @@ import { Button } from '../../constants/buttons'
 
 const Home = () => {
     const history = useHistory()
+    const {pokemons} = useContext(GlobalStateContext)
 
     return(
         <div>
@@ -17,7 +18,12 @@ const Home = () => {
             <h1>Home</h1>
             <Button onClick={ () => goToPokeDetail(history) }>Detalhes</Button>
             <Button onClick={ () => goToPokedex(history) }>Pokedex</Button>
-            <PokemonCard/>
+            <div>
+                {pokemons && pokemons.map((poke) => {
+                    return <PokemonCard poke={poke}key={poke.name}/>
+                })}
+            </div>
+            
         </div>
     )
 }

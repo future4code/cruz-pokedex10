@@ -9,13 +9,12 @@ export const PokeContainer = styled.div`
 `
 
 export const ImgContainer = styled.div`
-    background: gray;
     display: flex;
     justify-content: center;
     align-items: center;
 `
 
-export const PokeImage = styled.div`
+export const PokeImage = styled.img`
 
 `
 
