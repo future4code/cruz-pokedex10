@@ -36,20 +36,19 @@ const PokemonCard = (props) => {
     }
 
     const removePokedex = () => {
-        const pokeIndex = pokemons.findIndex((item) => item.name === props.poke.name)
-
-        const newPokemonsList = [...pokemons]
-            newPokemonsList.splice(pokeIndex, 1)
-
-        const orderedPokemonsList = newPokemonsList.sort((a, b) => {
+        const pokeIndex = pokedex.findIndex((item) => item.name === props.poke.name)
+      
+          const newPokedexList = [...pokedex]
+          newPokedexList.splice(pokeIndex, 1)
+          const orderedPokedex = newPokedexList.sort((a, b) => {
             return a.id - b.id
-        })
-
-        const newPokedexList = [...pokedex, props.poke]
-
-        const orderedPokedex = newPokedexList.sort((a, b) => {
+          })
+      
+          const newPokemonsList = [...pokemons, props.poke]
+          
+          const orderedPokemonsList = newPokemonsList.sort((a, b) => {
             return a.id - b.id
-        })
+          })
 
         setPokedex(orderedPokedex)
         setPokemons(orderedPokemonsList)
