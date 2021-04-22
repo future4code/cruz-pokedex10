@@ -6,7 +6,6 @@ import {
     ButtonsContainer} from './styled'
 import GlobalStateContext from '../../global/GlobalStateContext'
 import { useHistory } from 'react-router-dom'
-import { goToPokedex } from '../../routes/coordinator'
 import { goToPokeDetail } from '../../routes/coordinator'
 
 import { Button } from '../../constants/buttons'

@@ -1,69 +1,82 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useContext, useState, useEffect } from 'react'
+import axios from 'axios'
 
-const MainContainer = styled.div`
-    height: 80vh;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-`
+import { useParams } from 'react-router-dom'
+import GlobalStateContext from '../../global/GlobalStateContext'
+import { BASE_URL } from '../../constants/api'
 
-const ContainerLeft = styled.div`
-    margin-top: 10%;
-    height: 80%;
-    width: 50%;
-`
-const ContainerRight = styled.div`
-    height: 80%;
-    width: 50%;
-`
-
-const FrontBox = styled.div`
-    background-color: grey;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 3%;
-    height: 40%;
-    width: 25%;
-`
-const FrontImg = styled.img`
-    width: 170px;
-`
-
-const BackImg = styled.img`
-    width: 170px;
-`
-
-const BackBox = styled.div`
-    background-color: grey;
-    margin-left: auto;
-    margin-right: auto;
-    height: 40%;
-    width: 25%;
-`
-const Description = styled.div`
-    background-color: grey;
-    height: 85%;
-    width: 70%;
-    margin-top: 10%;
-`
+import { MainContainer, ContainerLeft, FrontBox, FrontImg, BackImg, BackBox, ContainerRight, Description } from './styled'
 
 const Details = () => {
+    const { name, telaPokedex } = useParams()
+    const {pokemons, pokedex }=  useContext(GlobalStateContext)
+    const [selectedPokemon, setSelectedPokemon] = useState({})
+
+    useEffect(() => {
+        let currentPokemon = []
+        if(telaPokedex) {
+            currentPokemon = pokedex.find((item) => {
+                return item.name === name
+            })
+        } else {
+            currentPokemon = pokemons.find((item) => {
+                return item.name === name
+            })
+        }
+
+        if(!currentPokemon) {
+            axios
+                .get(`${BASE_URL}/${name}`)
+                .then((res) => setSelectedPokemon(res.data))
+                .catch((err) => console.log(err.response.message))
+        } else {
+            setSelectedPokemon(currentPokemon)
+        }
+    }, [name, pokedex, pokemons, telaPokedex])
 
   return (
     <div>
       <MainContainer>
+          <h1>{selectedPokemon.name}</h1>
         <ContainerLeft>
-            <FrontBox>
-                <FrontImg src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png'></FrontImg>
-            </FrontBox>
-            <BackBox>
-                <BackImg src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/4.png'></BackImg>
-            </BackBox>
+            { selectedPokemon && selectedPokemon.sprites && ( 
+            <>
+                    <FrontBox>
+                        <FrontImg src={ selectedPokemon.sprites.front_default }></FrontImg>
+                    </FrontBox>
+                    <BackBox>
+                        <BackImg src={ selectedPokemon.sprites.back_default }></BackImg>
+                    </BackBox>
+            </>
+            )}
         </ContainerLeft>
         <ContainerRight>
-            <Description></Description>
+            <Description>
+            <h1>Poderes</h1>
+            {selectedPokemon.stats && selectedPokemon.stats.map((stat) => {
+                return (
+                     <p key={stat.stat.name}><strong>{stat.stat.name}</strong>: {stat.base_stat}</p>
+                )
+            })};
+
+            <h1>Tipos</h1>
+
+            {selectedPokemon.types && selectedPokemon.types.map((type) => {
+                return (
+                    <p>{type.type.name}</p>
+                )
+
+                
+            })}
+
+            <h1>Ataques</h1>
+
+            {selectedPokemon.moves && selectedPokemon.moves.map((move, index) => {
+                return (
+                    index < 5 && <p>{move.move.name}</p>
+                )
+            })}
+            </Description>
         </ContainerRight>
       </MainContainer>
     </div>
