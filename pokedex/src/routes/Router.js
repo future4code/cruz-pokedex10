@@ -1,9 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-import Home from '../screen/Home/Home'
-import Pokedex from '../screen/Pokedex/Pokedex'
-import PokeDetail from '../screen/PokeDetail/PokeDetail'
+import Home from '../screens/Home/Home'
+import Pokedex from '../screens/Pokedex/Pokedex'
+import PokeDetail from '../screens/PokeDetail/PokeDetail'
 
 const Router = () => {
     return(
@@ -17,7 +17,7 @@ const Router = () => {
                     <Pokedex/>
                 </Route>
 
-                <Route exact path='/pokedetail'>
+                <Route exact path='/pokedetail/:name'>
                     <PokeDetail/>
                 </Route>
             </Switch>

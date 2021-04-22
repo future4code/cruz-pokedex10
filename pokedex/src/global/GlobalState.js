@@ -38,12 +38,7 @@ const GlobaState = (props) => {
             .catch((error) => console.log(error))
     }
 
-    const data = {
-        pokemons,
-        setPokemons,
-        pokedex,
-        setPokedex
-    }
+    const data = { pokemons, setPokemons, pokedex, setPokedex }
 
     return (
 
@@ -52,7 +47,5 @@ const GlobaState = (props) => {
         </GlobalStateContext.Provider>
     )
 }
-
-
 
 export default GlobaState
