@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import GlobalStateContext from '../../global/GlobalStateContext'
 import { BASE_URL } from '../../constants/api'
 
-import { MainContainer, ContainerLeft, FrontBox, FrontImg, BackImg, BackBox, ContainerRight, Description } from './styled'
+import { Container, MainContainer, ContainerLeft, FrontBox, FrontImg, BackImg, BackBox, ContainerCenter, ContainerRight, Description, PokeTitle } from './styled'
 
 const Details = () => {
     const { name, telaPokedex } = useParams()
@@ -35,9 +35,9 @@ const Details = () => {
     }, [name, pokedex, pokemons, telaPokedex])
 
   return (
-    <div>
+    <Container>
+         <PokeTitle>{selectedPokemon.name}</PokeTitle>
       <MainContainer>
-          <h1>{selectedPokemon.name}</h1>
         <ContainerLeft>
             { selectedPokemon && selectedPokemon.sprites && ( 
             <>
@@ -50,36 +50,39 @@ const Details = () => {
             </>
             )}
         </ContainerLeft>
-        <ContainerRight>
+        <ContainerCenter>
             <Description>
             <h1>Poderes</h1>
             {selectedPokemon.stats && selectedPokemon.stats.map((stat) => {
                 return (
                      <p key={stat.stat.name}><strong>{stat.stat.name}</strong>: {stat.base_stat}</p>
                 )
-            })};
-
-            <h1>Tipos</h1>
-
-            {selectedPokemon.types && selectedPokemon.types.map((type) => {
-                return (
-                    <p>{type.type.name}</p>
-                )
-
-                
             })}
 
-            <h1>Ataques</h1>
-
-            {selectedPokemon.moves && selectedPokemon.moves.map((move, index) => {
-                return (
-                    index < 5 && <p>{move.move.name}</p>
-                )
-            })}
+            
             </Description>
+        </ContainerCenter>
+        <ContainerRight>
+        <h1>Tipos</h1>
+
+        {selectedPokemon.types && selectedPokemon.types.map((type) => {
+            return (
+                <p>{type.type.name}</p>
+            )
+
+            
+        })}
+
+        <h1>Ataques</h1>
+
+        {selectedPokemon.moves && selectedPokemon.moves.map((move, index) => {
+            return (
+                index < 5 && <p>{move.move.name}</p>
+            )
+        })}
         </ContainerRight>
       </MainContainer>
-    </div>
+    </Container>
   )
 };
 

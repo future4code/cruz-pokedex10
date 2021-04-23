@@ -62,7 +62,7 @@ const PokemonCard = (props) => {
 
         <ButtonsContainer>
             <Button onClick={ props.isPokedex ? removePokedex : addToPokedex }>
-             { props.isPokedex ? "Remover da Pokédex" : "Adicinar a Pokédex" }
+             { props.isPokedex ? "Remover da Pokédex" : "Pegar Pokemon" }
              </Button>
             <Button onClick={ () => goToPokeDetail(history, props.poke.name, props.isPokedex)  }> Ver detalhes </Button>
         </ButtonsContainer>

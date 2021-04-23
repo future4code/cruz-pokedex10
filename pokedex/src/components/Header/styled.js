@@ -2,10 +2,11 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     text-align: center;
-    border-bottom: 1px solid grey;
+    border-bottom: 3px dashed #f2c230;
+    background-color: #030ba650;
 
     img {
-        height: 80px;
+        height: 90px;
         padding: 20px;
-    }
+    };
 `
