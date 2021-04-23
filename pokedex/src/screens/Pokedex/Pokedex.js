@@ -4,6 +4,7 @@ import { goToHome } from '../../routes/coordinator'
 import GlobalStateContext from '../../global/GlobalStateContext'
 
 import Header from '../../components/Header/Header'
+import { Container, ContainerButton, PokedexDiv} from './styled'
 import { Button } from '../../constants/buttons'
 import PokemonCard from '../../components/PokemonCard/PokemonCard'
 
@@ -12,17 +13,18 @@ const Pokedex = () => {
     const {pokedex} = useContext(GlobalStateContext)
 
     return(
-        <div>
+        <Container>
             <Header/>
-            <h1>Pokedex</h1>
-            <Button onClick = {() => goToHome(history)}>Voltar Para Home</Button>
-            <div>
+            <ContainerButton>
+                <Button onClick = {() => goToHome(history)}>Voltar Para Home</Button>
+            </ContainerButton>
+            <PokedexDiv>
                 {pokedex && pokedex.map((poke) => {
                     return <PokemonCard isPokedex key={poke.name} poke={poke} />
                 })}
-            </div>
+            </PokedexDiv>
             
-        </div>
+        </Container>
     )
 }
 
