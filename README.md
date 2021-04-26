@@ -1,5 +1,7 @@
 # POKEDEX
 
+<img src='https://github.com/future4code/cruz-pokedex10/blob/master/project_images/pokedexhome.png' alt='pokedex_home_img'/>
+
 Nome dos integrantes: 
 - Paulo Oliveira
 - Thiago Jatobá
