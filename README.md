@@ -1,16 +1,12 @@
 # POKEDEX
 
-Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+<img src='https://github.com/future4code/cruz-pokedex10/blob/master/project_images/pokedexhome.png' alt='pokedex_home_img'/>
 
-Link do Surge: www.link.com.br
+Nome dos integrantes: 
+- Paulo Oliveira
+- Thiago Jatobá
+
+Link do Surge: [Pokedex](http://pokedex10-labenu.surge.sh/)
 
 O que funciona:
-- Item 1
-- Item 2
-
-O que não funciona: 
-- Item 3
-- Item 4
+- As funcionalidades obrigatórias e responsividade.
